@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/www/!svn/ver/5/isolution/erp/nfephp/libs/External/PHPMailer/examples
+END
+contents.html
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/www/!svn/ver/5/isolution/erp/nfephp/libs/External/PHPMailer/examples/contents.html
+END
+test_sendmail_basic.php
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/www/!svn/ver/5/isolution/erp/nfephp/libs/External/PHPMailer/examples/test_sendmail_basic.php
+END
+test_smtp_gmail_basic.php
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/www/!svn/ver/5/isolution/erp/nfephp/libs/External/PHPMailer/examples/test_smtp_gmail_basic.php
+END
+test_sendmail_advanced.php
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/www/!svn/ver/5/isolution/erp/nfephp/libs/External/PHPMailer/examples/test_sendmail_advanced.php
+END
+test_smtp_basic_no_auth.php
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/www/!svn/ver/5/isolution/erp/nfephp/libs/External/PHPMailer/examples/test_smtp_basic_no_auth.php
+END
+test_smtp_gmail_advanced.php
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/www/!svn/ver/5/isolution/erp/nfephp/libs/External/PHPMailer/examples/test_smtp_gmail_advanced.php
+END
+test_mail_basic.php
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/www/!svn/ver/5/isolution/erp/nfephp/libs/External/PHPMailer/examples/test_mail_basic.php
+END
+test_pop_before_smtp_basic.php
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/www/!svn/ver/5/isolution/erp/nfephp/libs/External/PHPMailer/examples/test_pop_before_smtp_basic.php
+END
+test_smtp_basic.php
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/www/!svn/ver/5/isolution/erp/nfephp/libs/External/PHPMailer/examples/test_smtp_basic.php
+END
+test_smtp_advanced_no_auth.php
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/www/!svn/ver/5/isolution/erp/nfephp/libs/External/PHPMailer/examples/test_smtp_advanced_no_auth.php
+END
+test_mail_advanced.php
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/www/!svn/ver/5/isolution/erp/nfephp/libs/External/PHPMailer/examples/test_mail_advanced.php
+END
+test_pop_before_smtp_advanced.php
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/www/!svn/ver/5/isolution/erp/nfephp/libs/External/PHPMailer/examples/test_pop_before_smtp_advanced.php
+END
+test_smtp_advanced.php
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/www/!svn/ver/5/isolution/erp/nfephp/libs/External/PHPMailer/examples/test_smtp_advanced.php
+END
+test_db_smtp_basic.php
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/www/!svn/ver/5/isolution/erp/nfephp/libs/External/PHPMailer/examples/test_db_smtp_basic.php
+END

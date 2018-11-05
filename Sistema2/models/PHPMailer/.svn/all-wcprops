@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/www/!svn/ver/5/isolution/erp/nfephp/libs/External/PHPMailer
+END
+LICENSE
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/www/!svn/ver/5/isolution/erp/nfephp/libs/External/PHPMailer/LICENSE
+END
+aboutus.html
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/www/!svn/ver/5/isolution/erp/nfephp/libs/External/PHPMailer/aboutus.html
+END
+changelog.txt
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/www/!svn/ver/5/isolution/erp/nfephp/libs/External/PHPMailer/changelog.txt
+END
+class.phpmailer.php
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/www/!svn/ver/5/isolution/erp/nfephp/libs/External/PHPMailer/class.phpmailer.php
+END
+class.pop3.php
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/www/!svn/ver/5/isolution/erp/nfephp/libs/External/PHPMailer/class.pop3.php
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/www/!svn/ver/5/isolution/erp/nfephp/libs/External/PHPMailer/README
+END
+class.smtp.php
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/www/!svn/ver/5/isolution/erp/nfephp/libs/External/PHPMailer/class.smtp.php
+END
