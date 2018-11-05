@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<agenda>
+  <contato>
+    <nome>Tiao J.</nome>
+    <telefone>5555-4444</telefone>
+    <endereco>R. Jaú, 3</endereco>
+  </contato>
+  <contato>
+    <nome>Joao S.</nome>
+    <telefone>4444-5555</telefone>
+    <endereco>R. Itú, 4</endereco>
+  </contato>
+</agenda>
