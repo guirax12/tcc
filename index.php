@@ -24,68 +24,14 @@ $validate ->ValidaSessao($_SESSION['usuarioid']);
 
     <section id="main-content" class="">
         <section class="wrapper main-wrapper row" style=''>
+            <div class="jumbotron jumbotron-fluid">
+  <h1 class="display-4">Bem vindo,<?php echo $_SESSION['usuarionome'];?>!</h1>
+  <p class="lead">Através de nossa plataforma,cadastre pessoas e suas inadimplências.</p>
+  <hr class="my-4">
+  <p>Todas as solicitações são analisadas e aprovadas por nossos funcionários.</p>
 
-            <div class='col-xs-12'>
-                <div class="page-title">
-                    <ol class="breadcrumb primary">
-                        <li class="active">
-                            <strong><i class="fa fa-home"></i>Início</strong>
-                        </li>
-                    </ol>
-                </div>
-            </div>
-
-            <div class="col-lg-12">
-                <section class="box nobox marginBottom0">
-                    <div class="content-body">
-                        <div class="row">
-
-                            <div class="col-lg-3 col-sm-6 col-xs-12">
-                                <div class="r4_counter db_box">
-                                    <i class='pull-left fa fa-thumbs-up icon-md icon-rounded icon-primary'></i>
-                                    <div class="stats">
-                                        <h4><strong>45%</strong></h4>
-                                        <span>New Orders</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-sm-6 col-xs-12">
-                                <div class="r4_counter db_box">
-                                    <i class='pull-left fa fa-shopping-cart icon-md icon-rounded icon-accent'></i>
-                                    <div class="stats">
-                                        <h4><strong>243</strong></h4>
-                                        <span>New Products</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-sm-6 col-xs-12">
-                                <div class="r4_counter db_box">
-                                    <i class='pull-left fa fa-dollar icon-md icon-rounded icon-purple'></i>
-                                    <div class="stats">
-                                        <h4><strong>$3424</strong></h4>
-                                        <span>Profit Today</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-sm-6 col-xs-12">
-                                <div class="r4_counter db_box">
-                                    <i class='pull-left fa fa-users icon-md icon-rounded icon-warning'></i>
-                                    <div class="stats">
-                                        <h4><strong>1433</strong></h4>
-                                        <span>New Users</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <!-- End .row -->
-                    </div>
-                </section>
-            </div>
-            <!-- END CONTENT -->
+</div>
+          
         </section>
     </section>
     <!-- CHAT <?php //include("../../views/includes/chat.php");?> -->

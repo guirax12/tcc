@@ -220,7 +220,7 @@ function RetornaMenu($usuario){
                 </a>
             </li>';
             $menu .=  '<li class="">
-                <a href="/views/administrativo/usuario.php">
+                <a href="/views/usuario/dividas.php">
                     <i class="fas fa-edit"></i>
                     <span class="title">Dividas</span>
                 </a>
@@ -228,7 +228,7 @@ function RetornaMenu($usuario){
 
       $menu .='<li class="menusection">Recarga</li>';
        $menu .=  '<li class="">
-                <a href="/views/administrativo/usuario.php">
+                <a href="/views/usuario/recarga.php">
                     <i class="fas fa-edit"></i>
                     <span class="title">Comprar Créditos</span>
                 </a>
@@ -410,6 +410,268 @@ function VerificaSaldo($usuario){
 
     $_SESSION['credito'] = $newcred;
   }
+  function AlteraUsuarioMenu($usuario){
+
+
+
+  $validacao = new validacao;
+
+ echo $validacao->validarCampo("Nome",$usuario->getNome(),100,4);
+  echo $validacao->validarCampo("Senha",$usuario->getSenha(),25,8);
+
+
+
+  if($usuario->getAvatar() == ''){
+    $foto = '';
+  } else{
+     echo $validacao->ValidaImagem($usuario->getAvatar());
+      $foto = $usuario->getAvatar();
+
+  }
+
+  if($validacao->verifica()){
+   
+    // instanciando conexão
+    $conexao = new Conexao();
+
+    $raiz = $_SERVER['DOCUMENT_ROOT'];
+
+    if($foto == ''){
+      $whereFoto = '';
+    }else{
+
+      // Pega extensão da imagem
+      preg_match("/\.(jpeg|jpg|png|gif|bmp){1}$/i", $foto["name"], $ext);
+
+      // Gera um nome único para a imagem
+      $nome_imagem = md5(uniqid(time())) . "." . $ext[1];
+
+      // Caminho de onde ficará a imagem
+      $caminho_imagem = $raiz."/images/avatar/" . $nome_imagem;
+
+      // Faz o upload da imagem para seu respectivo caminho
+      move_uploaded_file($foto["tmp_name"], $caminho_imagem);
+
+      $whereFoto = ", Avatar = '{$nome_imagem}'";
+
+      $sql_imagem = "SELECT Avatar from tb_usuario where ID_Usuario = {$usuario->getId_usuario()}";
+      $resultado = mysqli_query($conexao->getConexao(),$sql_imagem);
+      $array = mysqli_fetch_assoc($resultado);
+
+      $imagem = $array['Avatar'];
+
+      if (file_exists($raiz."/images/avatar/".$imagem)) {
+        unlink($raiz."/images/avatar/".$imagem);
+      }
+    }
+
+
+    // Se for validado faz o insert
+    $cmdsql = "UPDATE tb_usuario SET Nome = '{$usuario->getNome()}', Senha = '{$usuario->getSenha()}' $whereFoto WHERE ID_Usuario = {$usuario->getId_usuario()} ";
+    $_SESSION['usuarionome'] = $usuario->getNome();
+    if($foto != ''){
+    $_SESSION['avatar'] = $nome_imagem;
+  }
+
+
+    
+    mysqli_query($conexao->getConexao(),$cmdsql);
+    
+    $conexao->FechaConexao($conexao->getConexao());
+
+   echo 1;
+    
+  }
+}
+function ListaUnicoUsuario($idUsuario){
+
+  $conexao = new Conexao();
+
+  $cmdsql = "SELECT * FROM tb_usuario WHERE ID_Usuario = $idUsuario";
+    
+  $resultado = mysqli_query($conexao->getConexao(), $cmdsql);
+
+  $array = mysqli_fetch_assoc($resultado);
+
+  $conexao->FechaConexao($conexao->getConexao());
+
+  $usuario = new Usuario();
+
+  $usuario->setNome($array['Nome']);
+  $usuario->setEmail($array['Email']);
+  $usuario->setSenha($array['Senha']);
+  $usuario->setAvatar($array['Avatar']);
+
+
+  return $usuario;
+
+}
+
+function ListaDivida($cpf){
+
+ $cliente = new nusoap_client('http://localhost/webservice/servidor.php?wsdl');
+  
+  
+  $parametros = array('cpf'=>$cpf);
+            
+    
+  $resultado = $cliente->call('divida', $parametros);
+
+ $jsonText = $resultado;
+$decodedText = html_entity_decode($jsonText);
+$myArray = json_decode($decodedText, true);
+
+
+$cont = count($myArray);
+$usuario = new Usuario();
+session_start();
+$usuario->setId_Usuario($_SESSION['usuarioid']);
+$saldo = VerificaSaldo($usuario);
+
+if($saldo >= 12.90){
+
+if($cont > 0){
+$html = null;
+$html = "<fieldset>
+    <h1>Consulta de Dividas</h1>
+    <p class='center sub-titulo'>
+      VALOR <strong>R$12,90</strong>
+    </p>";
+
+
+foreach($myArray as $array){
+
+  $html = $html."
+  <fieldset>
+  <p>Tipo:<strong>".$array['Tipo']."</strong></p>
+    <p>Valor:<strong>".$array['valor']."</strong></p>
+     <p>Empresa:<strong>".$array['Razao_Social']."</strong></p>
+    <p>Descricão:<strong>".$array['descricao']."</strong></p>
+   </fieldset>
+  ";
+
+}
+
+$html = $html."
+</fieldset>
+<style>
+   fieldset{
+
+}
+ 
+h1{
+  text-align: center;
+}
+ 
+p.sub-titulo{
+  font-size: 20px;
+}
+ 
+.direita{
+  text-align: right;
+}
+ 
+.center{
+  text-align: center;
+}
+</style>
+";
+ /* Cria a instância */
+$dompdf = new DOMPDF();
+/* Carrega seu HTML */
+$dompdf->load_html($html);
+
+/* Renderiza */
+$dompdf->render();
+// pega o código fonte do novo arquivo PDF gerado
+$output = $dompdf->output();
+
+
+
+      // Gera um nome único para o pdf
+      $nome_pdf = md5(uniqid(time())) . ".pdf";
+      $raiz = $_SERVER['DOCUMENT_ROOT'];
+// defina aqui o nome do arquivo que você quer que seja salvo
+file_put_contents($raiz."/pdf/".$nome_pdf, $output);
+$dir = $raiz."/pdf/".$nome_pdf;
+// redirecionamos o usuário para o download do arquivo
+//die("<script>location.href='nome_do_arquivo.pdf';</script>");
+
+
+ 
+$retorno = null;
+
+  $retorno = $retorno.'
+  <div class="alert alert-success alert-dismissible fade in">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <strong>Sucesso:</strong><a href="/pdf/'.$nome_pdf.'" target="_blank">Clique Aqui para acessar as informações</a></div>
+  ';
+
+  AtualizaSaldo($_SESSION['usuarioid'],$saldo,12.90);
+
+  }
+  else{
+
+$retorno = null;
+
+  $retorno = $retorno.'
+  <div class="alert alert-warning alert-dismissible fade in">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <strong>Aviso:</strong> Este CPF não possui dados cadastrados!</div>
+  ';
+
+  }
+}
+
+else{
+$retorno = null;
+
+  $retorno = $retorno.'
+  <div class="alert alert-danger alert-dismissible fade in">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <strong>Aviso:</strong> Você não possui saldo suficiente!</div>
+  ';
+
+
+}
+
+  return $retorno;
+
+}
+
+ function AtualizaSaldoCompra($id,$cred){
+
+    $cred = moeda($cred);
+   
+    $newcred = $cred + $_SESSION['credito'];
+
+    $conexao = new Conexao();
+
+    $cmdsql = "UPDATE tb_usuario set credito = $newcred
+        WHERE ID_Usuario = $id";
+
+    
+    $exec = mysqli_query($conexao->getConexao(),$cmdsql);
+    
+    $conexao->FechaConexao($conexao->getConexao());
+
+    
+
+    $_SESSION['credito'] = $newcred;
+
+      echo 1;
+  }
+
+  function moeda($get_valor) { 
+               $source = array('.', ',');  
+               $replace = array('', '.'); 
+               $valor = str_replace($source, $replace, $get_valor); //remove os pontos e substitui a virgula pelo ponto 
+               return $valor; //retorna o valor formatado para gravar no banco 
+       }
+
+
+
+
 
 
 

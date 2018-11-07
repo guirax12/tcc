@@ -65,13 +65,6 @@
                       </a>  
                         
                     </p>
-                    <p>
-                      <a href="#" data-target="#forgot-box" class="forgot-password-link">
-                            <i class="ace-icon fa fa-arrow-left"></i>
-                             Esqueceu a senha?
-                        </a>  
-
-                    </p>
                 </form>
 
             </div>

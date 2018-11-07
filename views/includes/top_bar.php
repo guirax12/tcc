@@ -112,4 +112,4 @@
     <script src="/js/jquery-1.11.2.min.js" type="text/javascript"></script>
     <script src="/js/jquery.validate.min.js" type="text/javascript"></script>
     <script src="/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
-<script src="../../js/laf/usuariomenu.js" type="text/javascript"></script>
+<script src="../../js/default/usuariomenu.js" type="text/javascript"></script>

@@ -19,7 +19,7 @@
                     <span class="profile-status online"></span>
                 </h3>
 
-                <p class="profile-title">R$:<?php echo $_SESSION['credito'];?></p>
+                <p class="profile-title">R$:<?php echo number_format($_SESSION['credito'], 2, ',', '.');?></p>
 
             </div>
 
